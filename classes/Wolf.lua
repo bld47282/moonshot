@@ -3,6 +3,7 @@ Wolf = Class{}
 function Wolf:init()
     self.wolf_run_01 = love.graphics.newImage('graphics/wolf_run_01.png')
     self.wolf_run_02 = love.graphics.newImage('graphics/wolf_run_02.png')
+    self.wolf_howl_01 = love.graphics.newImage('graphics/wolf_howl_01.png')
     self.wolf_stand_01 = love.graphics.newImage('graphics/wolf_stand_01.png')
     self.currentImg = self.wolf_run_01
     self.x = 0
@@ -14,6 +15,11 @@ function Wolf:init()
 end
 
 function Wolf:update(dt, groundSects)
+    if self.x > 1230 then
+        won = true
+        self.currentImg = self.wolf_howl_01
+        howl:play()
+    end
     -- collision checks
     collision = false
     currentFloor = 0
@@ -44,7 +50,7 @@ function Wolf:update(dt, groundSects)
         self.y = self.y + (250 * dt)
     else
         -- check if self and floor are a certain distance from each other, and update y if they are
-        math.abs(self.y - (currentFloor - (self.size / 2 * self.scale))) > 5 then
+        if math.abs(self.y - (currentFloor - (self.size / 2 * self.scale))) > 5 then
             self.y = math.min(self.y, currentFloor - (self.size / 2 * self.scale))
         end
 

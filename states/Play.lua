@@ -1,5 +1,8 @@
 Play = Class{__includes = Default}
 
+pull = true
+won = false
+
 function Play:init()
     self.wolf = Wolf()
     self.moon = Moon()
@@ -16,7 +19,9 @@ function Play:update(dt)
         for x=0,#self.groundSects do
             self.groundSects[x]:update(dt, self.moon.x)
         end
-        self.wolf:update(dt, self.groundSects)
+        if not won then
+            self.wolf:update(dt, self.groundSects)
+        end
     end
 
     -- pause checking
@@ -30,6 +35,14 @@ function Play:update(dt)
         spacePressed = true
     elseif not love.keyboard.isDown("space") then
         spacePressed = false
+    end
+
+    -- pull checking
+    if zPressed == false and love.keyboard.isDown("z") then
+        pull = not pull
+        zPressed = true
+    elseif not love.keyboard.isDown("z") then
+        zPressed = false
     end
 end
 
