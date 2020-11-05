@@ -15,11 +15,12 @@ function Wolf:init()
 end
 
 function Wolf:update(dt, groundSects)
-    if self.x > 1230 then
-        won = true
-        self.currentImg = self.wolf_howl_01
-        howl:play()
+    if self.x > 1230 and self.y < 500 then
+        self:victory()
+    elseif self.x > 1250 then
+        self:loss()
     end
+    
     -- collision checks
     collision = false
     currentFloor = 0
@@ -85,4 +86,16 @@ end
 function Wolf:standSprite()
     -- set static standing wolf sprite
     self.currentImg = self.wolf_stand_01
+end
+
+function Wolf:victory()
+    won = true
+    self.currentImg = self.wolf_howl_01
+    howl:play()
+end
+
+function Wolf:loss()
+    lost = true
+    self.currentImg = self.wolf_howl_01
+    howl:play()
 end

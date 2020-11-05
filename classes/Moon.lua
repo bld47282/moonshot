@@ -30,7 +30,7 @@ function Moon:update(dt)
 end
 
 function Moon:render()
-    love.graphics.draw(self.moonImg, self.x, self.y, self.rotation, self.scale, self.scale, self.size / 2,self.size / 2)
+    love.graphics.draw(self.moonImg, self.x, self.y, self.rotation, self.scale, self.scale, self.size / 2, self.size / 2)
 end
 
 function Moon:getX()

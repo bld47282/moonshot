@@ -17,6 +17,7 @@ require 'state'
 require 'states/Default'
 require 'states/Play'
 require 'states/Title'
+require 'states/Loss'
 
 -- Global images
 
@@ -38,6 +39,7 @@ function love.load()
     StateMachine = state {
         ['Title'] = function() return Title() end,
         ['Play'] = function() return Play() end,
+        ['Loss'] = function() return Loss() end,
     }
     StateMachine:change('Title')
 end
