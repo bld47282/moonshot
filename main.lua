@@ -6,7 +6,7 @@ spacePressed = false
 
 -- Load classes
 
-Class = require 'class'
+Class = require 'hump/class'
 require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Wolf'
