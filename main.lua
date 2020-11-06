@@ -10,6 +10,7 @@ Class = require 'hump/class'
 require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Wolf'
+require 'classes/Water'
 
 -- Load states
 

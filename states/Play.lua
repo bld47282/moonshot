@@ -8,9 +8,10 @@ function Play:init()
     self.wolf = Wolf()
     self.moon = Moon()
     self.groundSects = {}
+    self.water = Water(620)
 
     for x=0,23 do
-        self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 50)
+        self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
     end
 end
 
@@ -24,6 +25,7 @@ function Play:update(dt)
 
     if not paused then
         self.moon:update(dt)
+        self.water:update(dt)
         for x=0,#self.groundSects do
             self.groundSects[x]:update(dt, self.moon.x)
         end
@@ -61,6 +63,7 @@ function Play:render()
         self.groundSects[x]:render()
     end
     self.wolf:render()
+    self.water:render()
     
     -- if paused
     if paused then
