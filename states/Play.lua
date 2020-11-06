@@ -4,7 +4,7 @@ function Play:init()
     self.wolf = Wolf()
     self.moon = Moon()
     self.groundSects = {}
-    self.water = Water(200)
+    self.water = Water(620)
 
     for x=0,23 do
         self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 50)
@@ -37,12 +37,12 @@ end
 
 function Play:render()
     love.graphics.draw(background, 0, 0, 0, 1, 1)
-    self.water:render()
     self.moon:render()
     for x=0,#self.groundSects do
         self.groundSects[x]:render()
     end
     self.wolf:render()
+    self.water:render()
     
     -- if paused
     if paused then
