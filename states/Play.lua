@@ -29,7 +29,6 @@ function Play:update(dt)
     end
 
     if not paused then
-        
         if not won and not lost then
             self.moon:update(dt)
             self.water:update(dt)

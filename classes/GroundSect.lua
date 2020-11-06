@@ -15,8 +15,6 @@ function GroundSect:update(dt, moon)
         self.y = clamp(self.miny + math.abs(self.x - moon), self.y - (100 * dt), self.defaulty)
     elseif (math.abs(self.x - moon) < 100) and not pull then
         self.y = clamp(self.miny + math.abs(self.x - moon), self.y + (100 * dt), self.defaulty)
-    -- else
-        -- self.y = clamp(self.miny, self.y + (100 * dt), self.defaulty)
     end
 end
 
