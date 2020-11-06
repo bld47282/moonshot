@@ -7,6 +7,7 @@ function GroundSect:init(x, y)
     self.miny = y - 350
     self.x = x
     self.y = y
+    self.scale = 0.25
 end
 
 function GroundSect:update(dt, moon)
@@ -20,7 +21,7 @@ function GroundSect:update(dt, moon)
 end
 
 function GroundSect:render()
-    love.graphics.draw(self.groundImg, self.x, self.y, 0, 0.25, 0.25)
+    love.graphics.draw(self.groundImg, self.x, self.y, 0, self.scale, self.scale)
 end
 
 function clamp(low, n, high) 

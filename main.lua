@@ -6,10 +6,10 @@ spacePressed = false
 
 -- Load classes
 
-Class = require 'hump/class'
+Class = require 'libraries/hump/class'
 require 'classes/GroundSect'
 require 'classes/Moon'
-require 'classes/Wolf'
+require 'classes/Dingo'
 require 'classes/Water'
 
 -- Load states
@@ -19,6 +19,8 @@ require 'states/Default'
 require 'states/Play'
 require 'states/Title'
 require 'states/Loss'
+
+bump = require 'libraries/bump/bump'
 
 -- Global images
 

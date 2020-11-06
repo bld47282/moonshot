@@ -5,13 +5,18 @@ won = false
 lost = false
 
 function Play:init()
-    self.wolf = Wolf()
+    self.world = bump.newWorld(50)
+
+    self.dingo = Dingo()
+    self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
+
     self.moon = Moon()
     self.groundSects = {}
     self.water = Water(620)
 
     for x=0,23 do
         self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
+        self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
     end
 end
 
@@ -24,13 +29,15 @@ function Play:update(dt)
     end
 
     if not paused then
-        self.moon:update(dt)
-        self.water:update(dt)
-        for x=0,#self.groundSects do
-            self.groundSects[x]:update(dt, self.moon.x)
-        end
+        
         if not won and not lost then
-            self.wolf:update(dt, self.groundSects, self.water)
+            self.moon:update(dt)
+            self.water:update(dt)
+            for x=0,#self.groundSects do
+                self.groundSects[x]:update(dt, self.moon.x)
+                self.world:update(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth(), self.groundSects[x].groundImg:getHeight())
+            end
+            self.dingo:update(dt, self. water, self.world)
         end
     end
 
@@ -62,7 +69,7 @@ function Play:render()
     for x=0,#self.groundSects do
         self.groundSects[x]:render()
     end
-    self.wolf:render()
+    self.dingo:render()
     self.water:render()
     
     -- if paused
