@@ -14,22 +14,24 @@ function Wolf:init()
     self.animateTimer = 0
 end
 
-function Wolf:update(dt, groundSects)
-    if self.x > 1230 and self.y < 500 then
+function Wolf:update(dt, groundSects, water)
+    if self.y >= water.y then
+        self:loss()
+    elseif self.x > 1230 and self.y < 500 then
         self:victory()
     elseif self.x > 1250 then
         self:loss()
     end
     
-    -- collision checks
-    collision = false
+    -- groundCollision checks
+    groundCollision = false
     currentFloor = 0
     operatingSect = 0
 
     for x=#groundSects,0,-1 do
         if ((groundSects[x].x < self.x + 36) and (groundSects[x].x + 36 > self.x)) then
             if (self.y + (self.size / 2 * self.scale) > groundSects[x].y) then
-                collision = true
+                groundCollision = true
                 operatingSect = x
                 currentFloor = groundSects[x].y
             end
@@ -44,10 +46,10 @@ function Wolf:update(dt, groundSects)
         self.animateTimer = 0
     end
 
-    -- operate based on collision data
+    -- operate based on groundCollision data
 
-    if collision == false then
-        -- if no collision, fall
+    if groundCollision == false then
+        -- if no groundCollision, fall
         self.y = self.y + (250 * dt)
     else
         -- check if self and floor are a certain distance from each other, and update y if they are

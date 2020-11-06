@@ -30,7 +30,7 @@ function Play:update(dt)
             self.groundSects[x]:update(dt, self.moon.x)
         end
         if not won and not lost then
-            self.wolf:update(dt, self.groundSects)
+            self.wolf:update(dt, self.groundSects, self.water)
         end
     end
 
