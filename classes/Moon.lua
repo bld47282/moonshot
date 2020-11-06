@@ -1,7 +1,7 @@
 Moon = Class{}
 
 function Moon:init()
-    self.moonImg = love.graphics.newImage('graphics/moon_01.png')
+    self.moonImg = love.graphics.newImage('graphics/moon_02.png')
     self.x = 1000
     self.y = 100
     self.size = 500
@@ -30,7 +30,7 @@ function Moon:update(dt)
 end
 
 function Moon:render()
-    love.graphics.draw(self.moonImg, self.x, self.y, self.rotation, self.scale, self.scale, self.size / 2,self.size / 2)
+    love.graphics.draw(self.moonImg, self.x, self.y, self.rotation, self.scale, self.scale, self.size / 2, self.size / 2)
 end
 
 function Moon:getX()

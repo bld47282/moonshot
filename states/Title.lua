@@ -1,6 +1,8 @@
 Title = Class{__includes = Default}
 
 function Title:update(dt, groundSects)
+    won = false
+    lost = false
     if love.keyboard.isDown('return') then
         StateMachine:change('Play')
     end

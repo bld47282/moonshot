@@ -6,7 +6,7 @@ spacePressed = false
 
 -- Load classes
 
-Class = require 'class'
+Class = require 'hump/class'
 require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Wolf'
@@ -17,6 +17,7 @@ require 'state'
 require 'states/Default'
 require 'states/Play'
 require 'states/Title'
+require 'states/Loss'
 
 -- Global images
 
@@ -24,9 +25,10 @@ background = love.graphics.newImage("graphics/backdrop_01_default_01.png")
 
 -- Global sounds
 
-music = love.audio.newSource("sounds/till_paradiso-frisco_bar_at_midnight.mp3", "stream")
+music = love.audio.newSource("sounds/david_mumford-twinkle_twinkle.mp3", "stream")
 jump8 = love.audio.newSource("sounds/Jump8.wav", "static")
 jump9 = love.audio.newSource("sounds/Jump9.wav", "static")
+howl = love.audio.newSource("sounds/wolf7.mp3", "static")
 
 function love.load()
     windowHeight = 720
@@ -37,6 +39,7 @@ function love.load()
     StateMachine = state {
         ['Title'] = function() return Title() end,
         ['Play'] = function() return Play() end,
+        ['Loss'] = function() return Loss() end,
     }
     StateMachine:change('Title')
 end
