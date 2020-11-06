@@ -7,7 +7,7 @@ function Play:init()
     self.water = Water(620)
 
     for x=0,23 do
-        self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 50)
+        self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
     end
 end
 
