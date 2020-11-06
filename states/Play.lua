@@ -4,6 +4,7 @@ function Play:init()
     self.wolf = Wolf()
     self.moon = Moon()
     self.groundSects = {}
+    self.water = Water(200)
 
     for x=0,23 do
         self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 50)
@@ -13,6 +14,7 @@ end
 function Play:update(dt)
     if not paused then
         self.moon:update(dt)
+        self.water:update(dt)
         for x=0,#self.groundSects do
             self.groundSects[x]:update(dt, self.moon.x)
         end
@@ -35,6 +37,7 @@ end
 
 function Play:render()
     love.graphics.draw(background, 0, 0, 0, 1, 1)
+    self.water:render()
     self.moon:render()
     for x=0,#self.groundSects do
         self.groundSects[x]:render()
