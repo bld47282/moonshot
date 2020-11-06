@@ -44,7 +44,7 @@ function Wolf:update(dt, groundSects)
         self.y = self.y + (250 * dt)
     else
         -- check if self and floor are a certain distance from each other, and update y if they are
-        math.abs(self.y - (currentFloor - (self.size / 2 * self.scale))) > 5 then
+        if math.abs(self.y - (currentFloor - (self.size / 2 * self.scale))) > 5 then
             self.y = math.min(self.y, currentFloor - (self.size / 2 * self.scale))
         end
 
