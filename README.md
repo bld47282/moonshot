@@ -10,6 +10,6 @@ Moonshot is written in Lua and uses the [LÖVE](https://love2d.org/) framework. 
 
 Code for this project uses the MIT license, allowing use of the code for any purpose without restriction.
 
-This project makes use of some hump libraries. The license for this code is in the hump subfolder.
+This project makes use of some [hump](https://github.com/vrld/hump) libraries. The license for this code is in the hump subfolder.
 
-This project makes use of the bump library. The license for this code is in the bump subfolder.
+This project makes use of the [bump](https://github.com/kikito/bump.lua) library. The license for this code is in the bump subfolder.
