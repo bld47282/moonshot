@@ -17,8 +17,10 @@ function Play:init()
     self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
 
     for x=0,23 do
-        self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
-        self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
+        if x ~= 7 and x ~= 8 then
+            self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
+            self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
+        end
     end
 end
 
@@ -35,9 +37,9 @@ function Play:update(dt)
             self.moon:update(dt)
             self.water:update(dt)
             self.platform:update(dt)
-            for x=0,#self.groundSects do
-                self.groundSects[x]:update(dt, self.moon.x)
-                self.world:update(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth(), self.groundSects[x].groundImg:getHeight())
+            for k in pairs(self.groundSects) do
+                self.groundSects[k]:update(dt, self.moon.x)
+                self.world:update(self.groundSects[k], self.groundSects[k].x, self.groundSects[k].y, self.groundSects[k].groundImg:getWidth() * self.groundSects[k].scale, self.groundSects[k].groundImg:getHeight()* self.groundSects[k].scale)
             end
             self.dingo:update(dt, self. water, self.world)
         end
@@ -68,12 +70,13 @@ end
 function Play:render()
     love.graphics.draw(background, 0, 0, 0, 1, 1)
     self.moon:render()
-    for x=0,#self.groundSects do
-        self.groundSects[x]:render()
+    for k in pairs(self.groundSects) do
+        self.groundSects[k]:render()
     end
+    self.platform:render()
     self.dingo:render()
     self.water:render()
-    self.platform:render()
+    
     
     -- if paused
     if paused then
