@@ -9,13 +9,13 @@ function Dingo:init()
     self.dingo_stand_01 = love.graphics.newImage('graphics/dingo_stand.png')
     self.currentImg = self.dingo_run_01
     self.x = 100
-    self.y = 100
+    self.y = 500
     self.targetY = 0
     self.targetX = 0
     self.speed = 200
     self.gravity = 250
-    self.size = 500
     self.scale = 0.2
+    self.size = self.currentImg:getHeight() * self.scale
     self.animateTimer = 0
 end
 
@@ -29,12 +29,14 @@ function Dingo:update(dt, water, world)
     end
 
     self.x, self.y, cols, len = world:check(self, self.x, self.y + 1)
+    print(len)
     if len > 0 then
         self.targetX = self.x + (self.speed * dt)
     end
     
     self.targetY = self.y + (self.gravity * dt)
     self.x, self.y, cols, len = world:move(self, self.targetX, self.targetY)
+    print(len)
 
     -- animate standing dingo
 
@@ -66,7 +68,7 @@ function Dingo:alternateSprite()
     elseif self.currentImg == self.dingo_run_03 then
         self.currentImg = self.dingo_run_04
         jump9:play()
-    elseif self.currentImg == self.dingo_run_04 then
+    else
         self.currentImg = self.dingo_run_01
     end
 end
