@@ -11,6 +11,7 @@ require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Dingo'
 require 'classes/Water'
+require 'classes/Platform'
 
 -- Load states
 
