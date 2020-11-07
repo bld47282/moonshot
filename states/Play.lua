@@ -13,6 +13,8 @@ function Play:init()
     self.moon = Moon()
     self.groundSects = {}
     self.water = Water(620)
+    self.platform = Platform(800, 450)
+    self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
 
     for x=0,23 do
         self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200)
@@ -32,6 +34,7 @@ function Play:update(dt)
         if not won and not lost then
             self.moon:update(dt)
             self.water:update(dt)
+            self.platform:update(dt)
             for x=0,#self.groundSects do
                 self.groundSects[x]:update(dt, self.moon.x)
                 self.world:update(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth(), self.groundSects[x].groundImg:getHeight())
@@ -70,6 +73,7 @@ function Play:render()
     end
     self.dingo:render()
     self.water:render()
+    self.platform:render()
     
     -- if paused
     if paused then
