@@ -2,6 +2,7 @@ Loss = Class{__includes = Default}
 
 function Loss:update(dt, groundSects)
     if love.keyboard.isDown('return') then
+        current = 1
         StateMachine:change('Title')
     end
 end

@@ -18,8 +18,8 @@ function state:change(stateName, enterParams)
 	self.current:enter(enterParams)
 end
 
-function state:update(dt, groundSects)
-	self.current:update(dt, groundSects)
+function state:update(dt)
+	self.current:update(dt)
 end
 
 function state:render()

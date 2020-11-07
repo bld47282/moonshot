@@ -1,7 +1,8 @@
 GroundSect = Class{}
 
-function GroundSect:init(x, y)
-    self.groundImg = love.graphics.newImage('graphics/pillar_01_01.png')
+function GroundSect:init(x, y, groundImg, topImg)
+    self.groundImg = groundImg
+    self.topImg = topImg
     self.defaultx = x
     self.defaulty = y
     self.miny = y - 350
@@ -19,7 +20,9 @@ function GroundSect:update(dt, moon)
 end
 
 function GroundSect:render()
+    
     love.graphics.draw(self.groundImg, self.x, self.y, 0, self.scale, self.scale)
+    love.graphics.draw(self.topImg, self.x, self.y + 10 - (self.topImg:getHeight()* self.scale), 0, self.scale, self.scale)
 end
 
 function clamp(low, n, high) 

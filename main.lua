@@ -1,3 +1,8 @@
+-- Load libraries
+
+bump = require 'libraries/bump/bump'
+Class = require 'libraries/hump/class'
+
 -- Global variables
 
 debug = true
@@ -6,12 +11,15 @@ spacePressed = false
 
 -- Load classes
 
-Class = require 'libraries/hump/class'
 require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Dingo'
 require 'classes/Water'
 require 'classes/Platform'
+
+-- Load levels
+
+require 'levels/Level01'
 
 -- Load states
 
@@ -20,8 +28,6 @@ require 'states/Default'
 require 'states/Play'
 require 'states/Title'
 require 'states/Loss'
-
-bump = require 'libraries/bump/bump'
 
 -- Global images
 
@@ -48,7 +54,7 @@ function love.load()
     StateMachine:change('Title')
 end
 
-function love.update(dt, groundSects)
+function love.update(dt)
     StateMachine:update(dt)
 end
 
