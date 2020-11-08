@@ -5,8 +5,11 @@ function Dingo:init()
     self.dingo_run_02 = love.graphics.newImage('graphics/dingo/dingo_run_02.png')
     self.dingo_run_03 = love.graphics.newImage('graphics/dingo/dingo_run_03.png')
     self.dingo_run_04 = love.graphics.newImage('graphics/dingo/dingo_run_04.png')
-    self.dingo_howl_01 = love.graphics.newImage('graphics/dingo/dingo_stand.png')
+    self.dingo_howl_01 = love.graphics.newImage('graphics/dingo/dingo_howl_01.png')
     self.dingo_stand_01 = love.graphics.newImage('graphics/dingo/dingo_stand.png')
+    self.dingo_scratch_01 = love.graphics.newImage('graphics/dingo/dingo_scratch_01.png')
+    self.dingo_scratch_02 = love.graphics.newImage('graphics/dingo/dingo_scratch_02.png')
+    self.dingo_sit_01 = love.graphics.newImage('graphics/dingo/dingo_sit_01.png')
     self.currentImg = self.dingo_run_01
     self.x = 0
     self.y = 500
@@ -54,8 +57,7 @@ function Dingo:update(dt, water, world)
             self:alternateSprite()
             self.animateTimer = 0
         else
-            self:standSprite()
-            self.animateTimer = 0
+            self:idleAnimation()
         end
     end
  
@@ -99,4 +101,27 @@ function Dingo:loss()
     lost = true
     self.currentImg = self.dingo_howl_01
     howl:play()
+end
+
+function Dingo:idleAnimation()
+    if self.animateTimer < 1.85 then
+        self.currentImg = self.dingo_sit_01
+    elseif self.animateTimer < 2 then
+        self.currentImg = self.dingo_scratch_01
+    elseif self.animateTimer < 2.15 then
+        self.currentImg = self.dingo_scratch_02
+    elseif self.animateTimer < 2.3 then
+        self.currentImg = self.dingo_scratch_01
+    elseif self.animateTimer < 2.45 then
+        self.currentImg = self.dingo_scratch_02
+    elseif self.animateTimer < 2.6 then
+        self.currentImg = self.dingo_scratch_01
+    elseif self.animateTimer < 2.75 then
+        self.currentImg = self.dingo_scratch_02
+    elseif self.animateTimer < 2.9 then
+        self.currentImg = self.dingo_scratch_01
+    elseif self.animateTimer < 3.05 then
+        self.currentImg = self.dingo_sit_01
+        self.animateTimer = 0
+    end
 end
