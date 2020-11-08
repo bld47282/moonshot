@@ -33,6 +33,7 @@ require 'states/Loss'
 -- Global images
 
 background = love.graphics.newImage("graphics/global/backdrop_01_default_01.png")
+water = love.graphics.newImage("graphics/global/waves_01_01.png")
 
 -- Global sounds
 

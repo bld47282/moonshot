@@ -2,8 +2,9 @@ Water = Class{}
 
 function Water:init(y)
     self.y = y
-    self.minY = y - 20
-    self.maxY = y + 20
+    self.x = 0
+    self.minX = self.x - 20
+    self.maxX = self.x + 20
     self.width = 1280
     self.height = 720
     self.rising = true
@@ -11,17 +12,18 @@ function Water:init(y)
 end
 
 function Water:update(dt)
-    if self.rising == true and self.y < self.maxY then
-        self.y = self.y + (self.speed * dt)
-    elseif self.rising == true and self.y >= self.maxY then
+    if self.rising == true and self.x < self.maxX then
+        self.x = self.x + (self.speed * dt)
+    elseif self.rising == true and self.x >= self.maxX then
         self.rising = false
-    elseif self.rising == false and self.y > self.minY then
-        self.y = self.y - (self.speed * dt)
-    elseif self.rising == false and self.y <= self.minY then
+    elseif self.rising == false and self.x > self.minX then
+        self.x = self.x - (self.speed * dt)
+    elseif self.rising == false and self.x <= self.minX then
         self.rising = true
     end
 end
 
 function Water:render()
-    love.graphics.rectangle('fill', 0, self.y, self.width, self.height)
+    love.graphics.draw(water, self.x, self.y, 0, 0.5, 0.5)
+
 end
