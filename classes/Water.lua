@@ -1,8 +1,8 @@
 Water = Class{}
 
-function Water:init(y)
+function Water:init(x, y)
     self.y = y
-    self.x = 0
+    self.x = x - 20
     self.minX = self.x - 20
     self.maxX = self.x + 20
     self.width = 1280

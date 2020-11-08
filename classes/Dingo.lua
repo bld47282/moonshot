@@ -19,13 +19,13 @@ function Dingo:init()
     self.scale = 0.2
     self.size = self.currentImg:getHeight() * self.scale
     self.animateTimer = 0
-    self.dingoberry = Dingoberry(self.x + self.size + 10, self.y + self.size + 10)
+    self.dingoberry = Dingoberry(self.x + self.size, self.y + self.size + 10)
 end
 
 function Dingo:update(dt, water, world)
     -- victory/loss checks
     if self.y >= water.y then
-        self:loss()
+        -- self:loss()
     elseif self.x > 1200 then
         self:victory()
     end
@@ -60,7 +60,7 @@ function Dingo:update(dt, water, world)
     end
  
 
-    self.dingoberry:update(self.x + self.size + 10, self.y + self.size + 10)
+    self.dingoberry:update(self.x + self.size, self.y + self.size + 10)
     world:update(self.dingoberry, self.dingoberry.x, self.dingoberry.y, 10, 10)
 end
 

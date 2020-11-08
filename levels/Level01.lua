@@ -15,9 +15,9 @@ function Level01:init(levelNumber)
 
         self.moon = Moon()
         
-        self.water = Water(520)
+        self.water = Water(0, 500)
 
-        self.platform = Platform(770, 350)
+        self.platform = Platform(785, 350)
         self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
 
         self.groundSects = {}
@@ -40,7 +40,7 @@ function Level01:init(levelNumber)
 
         self.moon = Moon()
         
-        self.water = Water(520)
+        self.water = Water(0, 520)
 
         self.platform = Platform(8000, 3500)
         self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
