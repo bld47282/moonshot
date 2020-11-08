@@ -12,8 +12,8 @@ function Dingo:init()
     self.y = 500
     self.targetY = 0
     self.targetX = 500
-    self.speed = 200
-    self.gravity = 250
+    self.xVelocity = 200
+    self.yVelocity = 250
     self.scale = 0.2
     self.size = self.currentImg:getHeight() * self.scale
     self.animateTimer = 0
@@ -28,10 +28,10 @@ function Dingo:update(dt, water, world)
 
     local x, y, cols, len = world:check(self, self.x, self.y + 1)
     if len > 0 then
-        self.targetX = self.x + (self.speed * dt)
+        self.targetX = self.x + (self.xVelocity * dt)
     end
 
-    self.targetY = self.y + (self.gravity * dt)
+    self.targetY = self.y + (self.yVelocity * dt)
     self.x, self.y, cols, len = world:move(self, self.targetX, self.targetY)
 
     -- animate standing dingo
@@ -51,7 +51,6 @@ function Dingo:update(dt, water, world)
 end
 
 function Dingo:render()
-    love.graphics.print(self.x)
     love.graphics.draw(self.currentImg, self.x, self.y, 0, self.scale, self.scale)
 end
 
