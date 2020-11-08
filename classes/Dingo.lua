@@ -44,20 +44,21 @@ function Dingo:update(dt, water, world)
     -- move
     self.x, self.y, cols, len = world:move(self, self.targetX, self.targetY)
 
-    -- animate standing dingo
-
-    if self.x ~= self.targetX then
-        self:standSprite()
-        self.animateTimer = 0
-    end
-
-    -- animate running dingo
+    -- animation logic
 
     self.animateTimer = self.animateTimer + dt
+
+    -- animate standing dingo
     if self.animateTimer > 0.1 then
-        self:alternateSprite()
-        self.animateTimer = 0
+        if self.x == self.targetX and (blen > 0) then
+            self:alternateSprite()
+            self.animateTimer = 0
+        else
+            self:standSprite()
+            self.animateTimer = 0
+        end
     end
+ 
 
     self.dingoberry:update(self.x + self.size + 10, self.y + self.size + 10)
     world:update(self.dingoberry, self.dingoberry.x, self.dingoberry.y, 10, 10)
