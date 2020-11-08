@@ -6,7 +6,7 @@ function Level01:init(levelNumber)
         won = false
         lost = false
 
-        self.world = bump.newWorld(10)
+        self.world = bump.newWorld(50)
 
         self.dingo = Dingo()
         print(self.dingo.x)
@@ -33,7 +33,7 @@ function Level01:init(levelNumber)
         won = false
         lost = false
 
-        self.world = bump.newWorld(10)
+        self.world = bump.newWorld(50)
 
         self.dingo = Dingo()
         print(self.dingo.x)
