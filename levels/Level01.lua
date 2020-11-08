@@ -11,6 +11,7 @@ function Level01:init(levelNumber)
         self.dingo = Dingo()
 
         self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
+        self.world:add(self.dingo.dingoberry, self.dingo.dingoberry.x, self.dingo.dingoberry.y, 10, 10)
 
         self.moon = Moon()
         
@@ -35,7 +36,7 @@ function Level01:init(levelNumber)
 
         self.dingo = Dingo()
         self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
-        
+        self.world:add(self.dingo.dingoberry, self.dingo.dingoberry.x, self.dingo.dingoberry.y, 10, 10)
 
         self.moon = Moon()
         

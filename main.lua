@@ -14,6 +14,7 @@ spacePressed = false
 require 'classes/GroundSect'
 require 'classes/Moon'
 require 'classes/Dingo'
+require 'classes/Dingoberry'
 require 'classes/Water'
 require 'classes/Platform'
 

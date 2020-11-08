@@ -19,6 +19,7 @@ function Dingo:init()
     self.scale = 0.2
     self.size = self.currentImg:getHeight() * self.scale
     self.animateTimer = 0
+    self.dingoberry = Dingoberry(self.x + self.size + 10, self.y + self.size + 10)
 end
 
 function Dingo:update(dt, water, world)
@@ -31,7 +32,8 @@ function Dingo:update(dt, water, world)
 
     -- collision checks
     local x, y, cols, len = world:check(self, self.x, self.y + 1)
-    if len > 0 then
+    local bx, by, bcols, blen = world:check(self.dingoberry, self.dingoberry.x, self.dingoberry.y)
+    if (len > 0) and (blen > 0) then
         -- if there's a collision, try to move in x
         self.targetX = self.x + (self.xVelocity * dt)
     end
@@ -56,10 +58,14 @@ function Dingo:update(dt, water, world)
         self:alternateSprite()
         self.animateTimer = 0
     end
+
+    self.dingoberry:update(self.x + self.size + 10, self.y + self.size + 10)
+    world:update(self.dingoberry, self.dingoberry.x, self.dingoberry.y, 10, 10)
 end
 
 function Dingo:render()
     love.graphics.draw(self.currentImg, self.x, self.y, 0, self.scale, self.scale)
+    self.dingoberry:render()
 end
 
 function Dingo:alternateSprite()
