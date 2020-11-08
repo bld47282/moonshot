@@ -9,8 +9,6 @@ function Level01:init(levelNumber)
         self.world = bump.newWorld(50)
 
         self.dingo = Dingo()
-        print(self.dingo.x)
-        print(self.dingo.y)
 
         self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
 
@@ -36,9 +34,8 @@ function Level01:init(levelNumber)
         self.world = bump.newWorld(50)
 
         self.dingo = Dingo()
-        print(self.dingo.x)
-        print(self.dingo.y)
         self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
+        
 
         self.moon = Moon()
         
