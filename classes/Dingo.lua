@@ -13,25 +13,33 @@ function Dingo:init()
     self.targetY = 0
     self.targetX = 500
     self.xVelocity = 200
-    self.yVelocity = 250
+    self.yVelocity = 300
+    self.jumpVelocity = -500
+    self.currentJumpVelocity = 0
     self.scale = 0.2
     self.size = self.currentImg:getHeight() * self.scale
     self.animateTimer = 0
 end
 
 function Dingo:update(dt, water, world)
+    -- victory/loss checks
     if self.y >= water.y then
         self:loss()
     elseif self.x > 1200 then
         self:victory()
     end
 
+    -- collision checks
     local x, y, cols, len = world:check(self, self.x, self.y + 1)
     if len > 0 then
+        -- if there's a collision, try to move in x
         self.targetX = self.x + (self.xVelocity * dt)
     end
 
+    -- target y
     self.targetY = self.y + (self.yVelocity * dt)
+    
+    -- move
     self.x, self.y, cols, len = world:move(self, self.targetX, self.targetY)
 
     -- animate standing dingo
