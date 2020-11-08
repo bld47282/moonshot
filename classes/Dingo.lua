@@ -1,12 +1,12 @@
 Dingo = Class{}
 
 function Dingo:init()
-    self.dingo_run_01 = love.graphics.newImage('graphics/dingo_run_01.png')
-    self.dingo_run_02 = love.graphics.newImage('graphics/dingo_run_02.png')
-    self.dingo_run_03 = love.graphics.newImage('graphics/dingo_run_03.png')
-    self.dingo_run_04 = love.graphics.newImage('graphics/dingo_run_04.png')
-    self.dingo_howl_01 = love.graphics.newImage('graphics/dingo_stand.png')
-    self.dingo_stand_01 = love.graphics.newImage('graphics/dingo_stand.png')
+    self.dingo_run_01 = love.graphics.newImage('graphics/dingo/dingo_run_01.png')
+    self.dingo_run_02 = love.graphics.newImage('graphics/dingo/dingo_run_02.png')
+    self.dingo_run_03 = love.graphics.newImage('graphics/dingo/dingo_run_03.png')
+    self.dingo_run_04 = love.graphics.newImage('graphics/dingo/dingo_run_04.png')
+    self.dingo_howl_01 = love.graphics.newImage('graphics/dingo/dingo_stand.png')
+    self.dingo_stand_01 = love.graphics.newImage('graphics/dingo/dingo_stand.png')
     self.currentImg = self.dingo_run_01
     self.x = 0
     self.y = 500

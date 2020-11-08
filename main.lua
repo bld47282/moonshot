@@ -31,7 +31,7 @@ require 'states/Loss'
 
 -- Global images
 
-background = love.graphics.newImage("graphics/backdrop_01_default_01.png")
+background = love.graphics.newImage("graphics/global/backdrop_01_default_01.png")
 
 -- Global sounds
 

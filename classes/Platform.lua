@@ -1,7 +1,7 @@
 Platform = Class{}
 
 function Platform:init(x, y)
-    self.platformImg = love.graphics.newImage('graphics/platform.png')
+    self.platformImg = love.graphics.newImage('graphics/level01/platform.png')
     self.x = x
     self.y = y
     self.scale = 1

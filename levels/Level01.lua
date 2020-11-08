@@ -92,40 +92,44 @@ end
 function Level01:randomGroundImg()
     local randomNumber = math.random(0, 9)
     if randomNumber == 0 then 
-        return love.graphics.newImage('graphics/pillar_01_01.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_01.png')
     elseif randomNumber == 1 then 
-        return love.graphics.newImage('graphics/pillar_01_02.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_02.png')
     elseif randomNumber == 2 then 
-        return love.graphics.newImage('graphics/pillar_01_03.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_03.png')
     elseif randomNumber == 3 then 
-        return love.graphics.newImage('graphics/pillar_01_04.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_04.png')
     elseif randomNumber == 4 then 
-        return love.graphics.newImage('graphics/pillar_01_05.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_05.png')
     elseif randomNumber == 5 then 
-        return love.graphics.newImage('graphics/pillar_01_06.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_06.png')
     elseif randomNumber == 6 then 
-        return love.graphics.newImage('graphics/pillar_01_07.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_07.png')
     elseif randomNumber == 7 then 
-        return love.graphics.newImage('graphics/pillar_01_08.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_08.png')
     elseif randomNumber == 8 then 
-        return love.graphics.newImage('graphics/pillar_01_09.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_09.png')
     elseif randomNumber == 9 then 
-        return love.graphics.newImage('graphics/pillar_01_10.png')
+        return love.graphics.newImage('graphics/level01/pillar_01_10.png')
     end
     return groundImages[math.random(0, 9)]
 end
 
 function Level01:randomTopImg()
-    local randomNumber = math.random(0, 4)
+    local randomNumber = math.random(0, 6)
     if randomNumber == 0 then 
-        return love.graphics.newImage('graphics/pillar_top_01_01.png')
+        return love.graphics.newImage('graphics/level01/pillar_top_01_01.png')
     elseif randomNumber == 1 then 
-        return love.graphics.newImage('graphics/pillar_top_01_02.png')
+        return love.graphics.newImage('graphics/level01/pillar_top_01_02.png')
     elseif randomNumber == 2 then 
-        return love.graphics.newImage('graphics/pillar_top_01_03.png')
+        return love.graphics.newImage('graphics/level01/pillar_top_01_03.png')
     elseif randomNumber == 3 then 
-        return love.graphics.newImage('graphics/pillar_top_01_04.png')
+        return love.graphics.newImage('graphics/level01/pillar_top_01_04.png')
     elseif randomNumber == 4 then 
-        return love.graphics.newImage('graphics/pillar_top_01_05.png')
+        return love.graphics.newImage('graphics/level01/pillar_top_01_05.png')
+    elseif randomNumber == 5 then 
+        return love.graphics.newImage('graphics/level01/pillar_top_01_06.png')
+    elseif randomNumber == 6 then 
+        return love.graphics.newImage('graphics/level01/pillar_top_01_07.png')
     end
 end
