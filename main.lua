@@ -42,6 +42,12 @@ jump8 = love.audio.newSource("sounds/Jump8.wav", "static")
 jump9 = love.audio.newSource("sounds/Jump9.wav", "static")
 howl = love.audio.newSource("sounds/wolf7.mp3", "static")
 
+-- Global fonts
+
+font = love.graphics.newFont("fonts/OstrichSans-Black.otf", 20)
+bigFont = love.graphics.newFont("fonts/OstrichSans-Black.otf", 100)
+love.graphics.setFont(font)
+
 function love.load()
     windowHeight = 720
     windowWidth = 1280
@@ -62,5 +68,7 @@ end
 
 function love.draw(dt)
     StateMachine:render()
+    love.graphics.setColor(0,0,0)
     love.graphics.print("Current FPS: "..tostring(love.timer.getFPS( )), 10, 10)
+    love.graphics.setColor(1,1,1)
 end

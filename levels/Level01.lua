@@ -5,6 +5,7 @@ function Level01:init(levelNumber)
         pull = true
         won = false
         lost = false
+        time = 0
 
         self.world = bump.newWorld(50)
 
@@ -32,6 +33,7 @@ function Level01:init(levelNumber)
         pull = true
         won = false
         lost = false
+        time = 0
 
         self.world = bump.newWorld(50)
 
@@ -65,6 +67,7 @@ function Level01:update(dt)
     end
 
     if not paused and not won and not lost then
+        time = time + dt
         self.moon:update(dt)
         self.water:update(dt)
         self.water2:update(dt)

@@ -46,9 +46,14 @@ end
 
 function Play:render()
     currentLevel:render()
+    love.graphics.setColor(0,0,0)
+    love.graphics.print(string.format("Time: %.2f", time), 10, 35)
+    love.graphics.setColor(1,1,1)
     
     -- if paused
     if paused then
+        love.graphics.setColor(0,0,0)
         love.graphics.print('- paused -', windowWidth / 2, windowHeight / 2)
+        love.graphics.setColor(1,1,1)
     end
 end
