@@ -16,6 +16,7 @@ function Dingo:init()
     self.targetY = 0
     self.targetX = 500
     self.xVelocity = 200
+    self.xDirection = 1
     self.yVelocity = 300
     self.jumpVelocity = -500
     self.currentJumpVelocity = 0
@@ -38,7 +39,7 @@ function Dingo:update(dt, water, world)
     local bx, by, bcols, blen = world:check(self.dingoberry, self.dingoberry.x, self.dingoberry.y)
     if (len > 0) and (blen > 0) then
         -- if there's a collision, try to move in x
-        self.targetX = self.x + (self.xVelocity * dt)
+        self.targetX = self.x + (self.xVelocity * dt) * self.xDirection
     end
 
     -- target y
@@ -60,14 +61,13 @@ function Dingo:update(dt, water, world)
             self:idleAnimation()
         end
     end
- 
 
-    self.dingoberry:update(self.x + self.size, self.y + self.size + 10)
+    self.dingoberry:update(((self.xDirection == 1) and (self.x + self.size) or self.x), self.y + self.size + 10)
     world:update(self.dingoberry, self.dingoberry.x, self.dingoberry.y, 10, 10)
 end
 
 function Dingo:render()
-    love.graphics.draw(self.currentImg, self.x, self.y, 0, self.scale, self.scale)
+    love.graphics.draw(self.currentImg, self.x + ((self.xDirection == 1) and 0 or self.size), self.y, 0, self.scale * self.xDirection, self.scale)
     self.dingoberry:render()
 end
 
@@ -122,6 +122,8 @@ function Dingo:idleAnimation()
         self.currentImg = self.dingo_scratch_01
     elseif self.animateTimer < 3.05 then
         self.currentImg = self.dingo_sit_01
+    elseif self.animateTimer > 5 then
+        self.xDirection = self.xDirection * -1
         self.animateTimer = 0
     end
 end
