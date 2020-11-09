@@ -18,7 +18,7 @@ function Dingo:init()
     self.xVelocity = 200
     self.xDirection = 1
     self.yVelocity = 300
-    self.jumpVelocity = -500
+    self.jumpVelocity = -750
     self.currentJumpVelocity = 0
     self.scale = 0.2
     self.size = self.currentImg:getHeight() * self.scale
@@ -37,13 +37,13 @@ function Dingo:update(dt, water, world)
     -- collision checks
     local x, y, cols, len = world:check(self, self.x, self.y + 1)
     local bx, by, bcols, blen = world:check(self.dingoberry, self.dingoberry.x, self.dingoberry.y)
-    if (len > 0) and (blen > 0) then
+    if (len > 0) and (blen > 0)then
         -- if there's a collision, try to move in x
         self.targetX = self.x + (self.xVelocity * dt) * self.xDirection
     end
 
     -- target y
-    self.targetY = self.y + (self.yVelocity * dt)
+    self.targetY = self.y + (self.yVelocity * dt) + (self.currentJumpVelocity * dt)
     
     -- move
     self.x, self.y, cols, len = world:move(self, self.targetX, self.targetY)
