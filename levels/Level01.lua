@@ -64,18 +64,16 @@ function Level01:update(dt)
         StateMachine:change('Loss')
     end
 
-    if not paused then
-        if not won and not lost then
-            self.moon:update(dt)
-            self.water:update(dt)
-            self.water2:update(dt)
-            self.platform:update(dt)
-            for k in pairs(self.groundSects) do
-                self.groundSects[k]:update(dt, self.moon.x)
-                self.world:update(self.groundSects[k], self.groundSects[k].x, self.groundSects[k].y, self.groundSects[k].groundImg:getWidth() * self.groundSects[k].scale, self.groundSects[k].groundImg:getHeight()* self.groundSects[k].scale)
-            end
-            self.dingo:update(dt, self. water, self.world)
+    if not paused and not won and not lost then
+        self.moon:update(dt)
+        self.water:update(dt)
+        self.water2:update(dt)
+        self.platform:update(dt)
+        for k in pairs(self.groundSects) do
+            self.groundSects[k]:update(dt, self.moon.x)
+            self.world:update(self.groundSects[k], self.groundSects[k].x, self.groundSects[k].y, self.groundSects[k].groundImg:getWidth() * self.groundSects[k].scale, self.groundSects[k].groundImg:getHeight()* self.groundSects[k].scale)
         end
+        self.dingo:update(dt, self. water, self.world)
     end
 end
 
