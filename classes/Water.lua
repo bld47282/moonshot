@@ -1,10 +1,10 @@
 Water = Class{}
 
 function Water:init(x, y)
-    self.y = y
-    self.x = x - 20
-    self.minX = self.x - 20
-    self.maxX = self.x + 20
+    self.y = y + 100
+    self.x = x - 200
+    self.minX = self.x - 20 - math.random(0, 5)
+    self.maxX = self.x + 20 - math.random(0, 5)
     self.width = 1280
     self.height = 720
     self.rising = true

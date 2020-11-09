@@ -16,6 +16,7 @@ function Level01:init(levelNumber)
         self.moon = Moon()
         
         self.water = Water(0, 500)
+        self.water2 = Water(100, 520)
 
         self.platform = Platform(785, 350)
         self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
@@ -41,6 +42,7 @@ function Level01:init(levelNumber)
         self.moon = Moon()
         
         self.water = Water(0, 520)
+        self.water2 = Water(100, 520)
 
         self.platform = Platform(8000, 3500)
         self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
@@ -66,6 +68,7 @@ function Level01:update(dt)
         if not won and not lost then
             self.moon:update(dt)
             self.water:update(dt)
+            self.water2:update(dt)
             self.platform:update(dt)
             for k in pairs(self.groundSects) do
                 self.groundSects[k]:update(dt, self.moon.x)
@@ -85,6 +88,7 @@ function Level01:render()
     self.platform:render()
     self.dingo:render()
     self.water:render()
+    self.water2:render()
 end
 
 function Level01:randomGroundImg()
