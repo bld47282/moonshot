@@ -3,19 +3,25 @@ GroundSect = Class{}
 function GroundSect:init(x, y, groundImg, topImg)
     self.groundImg = groundImg
     self.topImg = topImg
-    self.defaultx = x
-    self.defaulty = y
+    self.defaulty = y + 20
     self.miny = y - 350
     self.x = x
     self.y = y
     self.scale = 0.25
+    self.speed = 100
 end
 
 function GroundSect:update(dt, moon)
     if (math.abs(self.x - moon) < 100) and pull then
-        self.y = clamp(self.miny + math.abs(self.x - moon), self.y - (100 * dt), self.defaulty)
+        self.y = clamp(self.miny + math.abs(self.x - moon), self.y - (self.speed * dt), self.defaulty)
     elseif (math.abs(self.x - moon) < 100) and not pull then
-        self.y = clamp(self.miny + math.abs(self.x - moon), self.y + (100 * dt), self.defaulty)
+        self.y = clamp(self.miny + math.abs(self.x - moon), self.y + (self.speed * dt), self.defaulty)
+    else
+        if self.defaulty > self.y then
+            self.y = self.y + ((self.speed / 4) * dt)
+        else
+            self.y = math.max(self.defaulty, self.y - ((self.speed / 4) * dt))
+        end
     end
 end
 
