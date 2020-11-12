@@ -19,8 +19,11 @@ function Level01:init(levelNumber)
         self.water = Water(0, 500)
         self.water2 = Water(100, 520)
 
-        self.platform = Platform(785, 350)
-        self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
+        self.stationaryItems = {}
+        table.insert(self.stationaryItems, Platform(800, 350))
+        for x in pairs(self.stationaryItems) do
+            self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
+        end
 
         self.groundSects = {}
         for x=0,23 do
@@ -46,12 +49,14 @@ function Level01:init(levelNumber)
         self.water = Water(0, 520)
         self.water2 = Water(100, 520)
 
-        self.platform = Platform(8000, 3500)
-        self.world:add(self.platform, self.platform.x, self.platform.y, self.platform.platformImg:getWidth() * self.platform.scale, self.platform.platformImg:getHeight() * self.platform.scale)
-
+        self.stationaryItems = {}
+        table.insert(self.stationaryItems, Platform(8000, 3500))
+        for x in pairs(self.stationaryItems) do
+            self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
+        end
 
         self.groundSects = {}
-        for x=0,23 do
+        for x=0, 23 do
             self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImg(), self.randomTopImg())
             self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
         end
@@ -71,7 +76,9 @@ function Level01:update(dt)
         self.moon:update(dt)
         self.water:update(dt)
         self.water2:update(dt)
-        self.platform:update(dt)
+        for x in pairs(self.stationaryItems) do
+            self.stationaryItems[x]:update(dt)
+        end
         for k in pairs(self.groundSects) do
             self.groundSects[k]:update(dt, self.moon.x)
             self.world:update(self.groundSects[k], self.groundSects[k].x, self.groundSects[k].y, self.groundSects[k].groundImg:getWidth() * self.groundSects[k].scale, self.groundSects[k].groundImg:getHeight()* self.groundSects[k].scale)
@@ -86,7 +93,9 @@ function Level01:render()
     for k in pairs(self.groundSects) do
         self.groundSects[k]:render()
     end
-    self.platform:render()
+    for x in pairs(self.stationaryItems) do
+        self.stationaryItems[x]:render()
+    end
     self.dingo:render()
     self.water:render()
     self.water2:render()
