@@ -28,7 +28,7 @@ function Level01:init(levelNumber)
         self.groundSects = {}
         for x=0,23 do
             if x ~= 7 and x ~= 8 and x ~= 9 then
-                self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImg(), self.randomTopImg())
+                self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImgW2(), self.randomTopImgW2())
                 self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
             end
         end
@@ -57,7 +57,7 @@ function Level01:init(levelNumber)
 
         self.groundSects = {}
         for x=0, 23 do
-            self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImg(), self.randomTopImg())
+            self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImgW1(), self.randomTopImgW1())
             self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
         end
     end
@@ -101,7 +101,7 @@ function Level01:render()
     self.water2:render()
 end
 
-function Level01:randomGroundImg()
+function Level01:randomGroundImgW1()
     local randomNumber = math.random(0, 9)
     if randomNumber == 0 then 
         return love.graphics.newImage('graphics/level01/pillar_01_01.png')
@@ -127,7 +127,7 @@ function Level01:randomGroundImg()
     return groundImages[math.random(0, 9)]
 end
 
-function Level01:randomTopImg()
+function Level01:randomTopImgW1()
     local randomNumber = math.random(0, 6)
     if randomNumber == 0 then 
         return love.graphics.newImage('graphics/level01/pillar_top_01_01.png')
@@ -143,5 +143,35 @@ function Level01:randomTopImg()
         return love.graphics.newImage('graphics/level01/pillar_top_01_06.png')
     elseif randomNumber == 6 then 
         return love.graphics.newImage('graphics/level01/pillar_top_01_07.png')
+    end
+end
+
+function Level01:randomGroundImgW2()
+    local randomNumber = math.random(0, 0)
+    if randomNumber == 0 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_01.png')
+    end
+end
+
+function Level01:randomTopImgW2()
+    local randomNumber = math.random(0, 8)
+    if randomNumber == 0 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_01.png')
+    elseif randomNumber == 1 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_02.png')
+    elseif randomNumber == 2 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_03.png')
+    elseif randomNumber == 3 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_04.png')
+    elseif randomNumber == 4 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_05.png')
+    elseif randomNumber == 5 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_06.png')
+    elseif randomNumber == 6 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_07.png')
+    elseif randomNumber == 7 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_08.png')
+    elseif randomNumber == 8 then 
+        return love.graphics.newImage('graphics/level02/pillar_top_01_09.png')
     end
 end
