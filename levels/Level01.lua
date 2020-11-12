@@ -20,7 +20,7 @@ function Level01:init(levelNumber)
         self.water2 = Water(100, 520)
 
         self.stationaryItems = {}
-        table.insert(self.stationaryItems, Platform(800, 350))
+        table.insert(self.stationaryItems, Platform(780, 350))
         for x in pairs(self.stationaryItems) do
             self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
         end
