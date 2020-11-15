@@ -73,6 +73,7 @@ function Play:render()
         else
             love.graphics.print("Press enter", (windowWidth / 2), (windowHeight / 2) - 50)
         end
+        love.graphics.print(string.format("Best time: %.2f", scores[current]), windowWidth / 2, windowHeight / 2 + 50)
         love.graphics.setColor(0,0,0)
     end
 end

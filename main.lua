@@ -2,6 +2,7 @@
 
 bump = require 'libraries/bump/bump'
 Class = require 'libraries/hump/class'
+hscores = require 'libraries/hscores'
 
 -- Global variables
 
@@ -51,6 +52,8 @@ love.graphics.setFont(font)
 function love.load()
     windowHeight = 720
     windowWidth = 1280
+
+    scores = hscores.getScores()
 
     music:play()
     

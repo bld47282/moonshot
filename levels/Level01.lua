@@ -1,5 +1,7 @@
 Level01 = Class{}
 
+hscores = require 'libraries/hscores'
+
 function Level01:init(levelNumber)
     if levelNumber == 2 then
         pull = true
@@ -67,6 +69,8 @@ function Level01:update(dt)
     -- victory/loss checking
     if won and not howl:isPlaying() then
         nextLevel = true
+        scores[current] = if time < scores[current] then time else scores[current] end
+        hscores.saveScores(scores) 
     elseif lost and not howl:isPlaying() then
         StateMachine:change('Loss')
     end
