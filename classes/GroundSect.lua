@@ -1,6 +1,6 @@
 GroundSect = Class{}
 
-howlmath = require 'libraries/howlmath'
+hmath = require 'libraries/hmath'
 
 function GroundSect:init(x, y, groundImg, topImg)
     self.groundImg = groundImg
@@ -15,9 +15,9 @@ end
 
 function GroundSect:update(dt, moon)
     if (math.abs(self.x - moon) < 100) and pull then
-        self.y = howlmath.clamp(self.miny + math.abs(self.x - moon), self.y - (self.speed * dt), self.defaulty)
+        self.y = hmath.clamp(self.miny + math.abs(self.x - moon), self.y - (self.speed * dt), self.defaulty)
     elseif (math.abs(self.x - moon) < 100) and not pull then
-        self.y = howlmath.clamp(self.miny + math.abs(self.x - moon), self.y + (self.speed * dt), self.defaulty)
+        self.y = hmath.clamp(self.miny + math.abs(self.x - moon), self.y + (self.speed * dt), self.defaulty)
     else
         if self.defaulty > self.y then
             self.y = self.y + ((self.speed / 4) * dt)
