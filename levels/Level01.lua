@@ -22,15 +22,15 @@ function Level01:init(levelNumber)
         self.water2 = Water(100, 520)
 
         self.stationaryItems = {}
-        table.insert(self.stationaryItems, Platform(780, 350))
+        table.insert(self.stationaryItems, Platform(350, 200, 2.5))
         for x in pairs(self.stationaryItems) do
             self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
         end
 
         self.groundSects = {}
-        for x=0,23 do
+        for x = 0, 13 do
             if x ~= 7 and x ~= 8 and x ~= 9 then
-                self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImgW2(), self.randomTopImgW2())
+                self.groundSects[x] = GroundSect(1280 - (x * GROUNDSECT_GAP), 720 - 200, self:randomGroundImgW2(), self.randomTopImgW2())
                 self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
             end
         end
@@ -52,14 +52,41 @@ function Level01:init(levelNumber)
         self.water2 = Water(100, 520)
 
         self.stationaryItems = {}
-        table.insert(self.stationaryItems, Platform(8000, 3500))
         for x in pairs(self.stationaryItems) do
             self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
         end
 
         self.groundSects = {}
-        for x=0, 23 do
-            self.groundSects[x] = GroundSect(1280 - (x * 55.4), 720 - 200, self:randomGroundImgW1(), self.randomTopImgW1())
+        for x = 0, 13 do
+            self.groundSects[x] = GroundSect(1280 - (x * GROUNDSECT_GAP), 720 - 200, self:randomGroundImgW1(), self.randomTopImgW1())
+            self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
+        end
+    elseif levelNumber == 3 then
+        pull = true
+        won = false
+        lost = false
+        background = love.graphics.newImage("graphics/level03/backdrop_01_default_01.png")
+        time = 0
+
+        self.world = bump.newWorld(50)
+
+        self.dingo = Dingo()
+        self.world:add(self.dingo, self.dingo.x, self.dingo.y, self.dingo.currentImg:getWidth() * self.dingo.scale, self.dingo.currentImg:getHeight() * self.dingo.scale)
+        self.world:add(self.dingo.dingoberry, self.dingo.dingoberry.x, self.dingo.dingoberry.y, 10, 10)
+
+        self.moon = Moon()
+        
+        self.water = Water(0, 520)
+        self.water2 = Water(100, 520)
+
+        self.stationaryItems = {}
+        for x in pairs(self.stationaryItems) do
+            self.world:add(self.stationaryItems[x], self.stationaryItems[x].x, self.stationaryItems[x].y, self.stationaryItems[x].platformImg:getWidth() * self.stationaryItems[x].scale, self.stationaryItems[x].platformImg:getHeight() * self.stationaryItems[x].scale)
+        end
+
+        self.groundSects = {}
+        for x=0, 13 do
+            self.groundSects[x] = GroundSect(1280 - (x * GROUNDSECT_GAP), 720 - 200, self:randomGroundImgW3(), self.randomTopImgW3())
             self.world:add(self.groundSects[x], self.groundSects[x].x, self.groundSects[x].y, self.groundSects[x].groundImg:getWidth() * self.groundSects[x].scale, self.groundSects[x].groundImg:getHeight() * self.groundSects[x].scale)
         end
     end
@@ -69,7 +96,7 @@ function Level01:update(dt)
     -- victory/loss checking
     if won and not howl:isPlaying() then
         nextLevel = true
-        scores[current] = if time < scores[current] then time else scores[current] end
+        -- scores[current] = if time < scores[current] then time else scores[current] end
         hscores.saveScores(scores) 
     elseif lost and not howl:isPlaying() then
         StateMachine:change('Loss')
@@ -151,9 +178,27 @@ function Level01:randomTopImgW1()
 end
 
 function Level01:randomGroundImgW2()
-    local randomNumber = math.random(0, 0)
+    local randomNumber = math.random(0, 9)
     if randomNumber == 0 then 
         return love.graphics.newImage('graphics/level02/pillar_01_01.png')
+    elseif randomNumber == 1 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_02.png')
+    elseif randomNumber == 2 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_03.png')
+    elseif randomNumber == 3 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_04.png')
+    elseif randomNumber == 4 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_05.png')
+    elseif randomNumber == 5 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_06.png')
+    elseif randomNumber == 6 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_07.png')
+    elseif randomNumber == 7 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_08.png')
+    elseif randomNumber == 8 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_09.png')
+    elseif randomNumber == 9 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_10.png')
     end
 end
 
@@ -177,5 +222,51 @@ function Level01:randomTopImgW2()
         return love.graphics.newImage('graphics/level02/pillar_top_01_08.png')
     elseif randomNumber == 8 then 
         return love.graphics.newImage('graphics/level02/pillar_top_01_09.png')
+    end
+end
+
+function Level01:randomGroundImgW3()
+    local randomNumber = math.random(0, 9)
+    if randomNumber == 0 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_01.png')
+    elseif randomNumber == 1 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_02.png')
+    elseif randomNumber == 2 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_03.png')
+    elseif randomNumber == 3 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_04.png')
+    elseif randomNumber == 4 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_05.png')
+    elseif randomNumber == 5 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_06.png')
+    elseif randomNumber == 6 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_07.png')
+    elseif randomNumber == 7 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_08.png')
+    elseif randomNumber == 8 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_09.png')
+    elseif randomNumber == 9 then 
+        return love.graphics.newImage('graphics/level02/pillar_01_10.png')
+    end
+end
+
+function Level01:randomTopImgW3()
+    local randomNumber = math.random(0, 7)
+    if randomNumber == 0 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_01.png')
+    elseif randomNumber == 1 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_02.png')
+    elseif randomNumber == 2 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_03.png')
+    elseif randomNumber == 3 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_04.png')
+    elseif randomNumber == 4 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_05.png')
+    elseif randomNumber == 5 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_06.png')
+    elseif randomNumber == 6 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_07.png')
+    elseif randomNumber == 7 then 
+        return love.graphics.newImage('graphics/level03/pillar_top_01_08.png')
     end
 end
