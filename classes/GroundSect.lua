@@ -5,11 +5,11 @@ hmath = require 'libraries/hmath'
 function GroundSect:init(x, y, groundImg, topImg)
     self.groundImg = groundImg
     self.topImg = topImg
-    self.defaulty = y + 20
+    self.defaulty = y
     self.miny = y - 350
     self.x = x
     self.y = y
-    self.scale = 0.25
+    self.scale = 0.5
     self.speed = 100
 end
 
