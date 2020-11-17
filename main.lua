@@ -9,6 +9,7 @@ hscores = require 'libraries/hscores'
 debug = true
 paused = false
 spacePressed = false
+GROUNDSECT_GAP = 102
 
 -- Load classes
 
