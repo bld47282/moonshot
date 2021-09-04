@@ -1,10 +1,10 @@
 # Howl
 
-A game made for Game Off 2020.
+A game about howling at the moon!
 
 ## About Howl
 
-Howl is written in Lua and uses the [LÖVE](https://love2d.org/) framework. It was produced for the [GAME OFF 2020](https://itch.io/jam/game-off-2020) competition.
+Howl is written in Lua and uses the [LÖVE](https://love2d.org/) framework. It was begun as an entry for the [GAME OFF 2020](https://itch.io/jam/game-off-2020) competition, but was continued as a personal project.
 
 ## License
 
