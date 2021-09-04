@@ -4,7 +4,7 @@ A game about howling at the moon!
 
 ## About Howl
 
-Howl is written in Lua and uses the [LÖVE](https://love2d.org/) framework. It was begun as an entry for the [GAME OFF 2020](https://itch.io/jam/game-off-2020) competition, but was continued as a personal project.
+Howl is written in Lua and uses the [LÖVE](https://love2d.org/) framework. It was begun as an entry for the [GAME OFF 2020](https://itch.io/jam/game-off-2020) competition, but was continued as a personal project. Artwork by [Joanna Savage Coleman](https://joannasavagecoleman.com/).
 
 ## License
 
